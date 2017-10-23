@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:id="@+id/textView_OpenCamera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="#D1C4E9"
+        android:onClick="onClickOpenCamera"
+        android:text="@string/str_OpenCamera"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/textView_ViewPicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="#C5CAE9"
+        android:onClick="onActivityResult"
+        android:text="@string/str_ViewPicture"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/textView_CallActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:text="@string/str_CallActivity"
+        android:textSize="16sp"
+        android:background="#F0F4C3"/>
+    <TextView
+        android:id="@+id/textView_Blank"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:text="@string/str_Blank"
+        android:textSize="16sp"
+        android:background="#FFB300"/>
+
+    <Button
+        android:id="@+id/button_Send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="#D1C4E9"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/str_Send"
+        android:textAlignment="center" />
+
+</LinearLayout>
