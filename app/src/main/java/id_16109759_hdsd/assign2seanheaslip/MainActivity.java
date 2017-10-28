@@ -1,25 +1,27 @@
 package id_16109759_hdsd.assign2seanheaslip;
 
+
 import android.content.Intent;
-import android.graphics.Bitmap;
+
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 public class MainActivity extends AppCompatActivity {
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-   // private ImageView mImageView;
-    String mCurrentPhotoPath;
+    private static final int ACTIVITY_START_CAMERA =0;
+//    public final String logTag = "Assign2";
+//    public final static int CAPTURE_IMAGE_REQUEST = 1;
+//    public String photoName = "photo.jpg";
+//    File photoFile;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,60 +30,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * 11/10/2017
-     * https://stackoverflow.com/questions/16799818/open-camera-using-intent
-     * 23/10/2017
-     * https://developer.android.com/training/camera/photobasics.html
-     * Section - "Take a photo with a camera app"
+     * MediaStore reference: Constants: ACTION_IMAGE_CAPTURE
+     * https://developer.android.com/reference/android/provider/MediaStore.html
+     * https://developer.android.com/reference/android/provider/MediaStore.html#ACTION_IMAGE_CAPTURE
+     * @param view
      */
-
-    //
-
-    public void onClickOpenCamera(View v) {
-
-        //Intent Action Image capture
-        Intent takePicIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(takePicIntent.resolveActivity(getPackageManager()) !=null) {
-            //Create the File where the phot should go
-            File photoFile = null;
-            try{
-                photoFile = createImageFile();
-            } catch (IOException ex) {
-                //Error occurred while creating the File
-
-            }
-            //Continue only if the File was successfully created
-            if(photoFile != null) {
-                Uri photoUri = FileProvider.getUriForFile(this,
-                        "id_16109759_hdsd.assign2seanheaslip", photoFile);
-                takePicIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-                startActivityForResult(takePicIntent, REQUEST_IMAGE_CAPTURE);
-            }
-            }
+    public void captureImage(View view) {
+        //Toast.makeText(this, "Camera button pressed", Toast.LENGTH_LONG).show();
+        Intent callCameraApplicationIntent = new Intent();
+        callCameraApplicationIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(callCameraApplicationIntent, ACTIVITY_START_CAMERA);
     }
-    
-   /* protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            mImageView.setImageBitmap(imageBitmap);
+
+    /**
+     * Receive the Result: onActivityResult:
+     * https://developer.android.com/training/basics/intents/result.html
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == ACTIVITY_START_CAMERA && resultCode == RESULT_OK) {
+            Toast.makeText(this, "Image taken", Toast.LENGTH_LONG).show();
         }
-
-    } */
-
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
     }
+
+    public void viewPhoto(View view) {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);//
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"),1);
+    }
+
 }
