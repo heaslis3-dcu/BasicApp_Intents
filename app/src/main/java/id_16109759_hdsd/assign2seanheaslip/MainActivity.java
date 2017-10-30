@@ -58,4 +58,19 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"),1);
     }
 
+    //Explicit Intent
+    public void openMocEmail(View arg0) {
+        Intent intent = new Intent(MainActivity.this, MessageView.class);
+        startActivity(intent);
+    }
+    /**
+     * Reference for launching email application
+     *https://stackoverflow.com/questions/3935009/how-to-open-gmail-compose-when-a-button-is-clicked-in-android-app
+     *
+     */
+    public void launchEmail(View view) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        startActivity(emailIntent);
+    }
 }

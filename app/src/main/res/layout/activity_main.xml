@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
+        android:onClick="openMocEmail"
         android:text="@string/str_CallActivity"
         android:textSize="16sp"
         android:background="#F0F4C3"/>
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:background="#D1C4E9"
+        android:onClick="launchEmail"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/str_Send"
