@@ -17,11 +17,6 @@ import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
     private static final int ACTIVITY_START_CAMERA =0;
-//    public final String logTag = "Assign2";
-//    public final static int CAPTURE_IMAGE_REQUEST = 1;
-//    public String photoName = "photo.jpg";
-//    File photoFile;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public void captureImage(View view) {
         //Toast.makeText(this, "Camera button pressed", Toast.LENGTH_LONG).show();
-        Intent callCameraApplicationIntent = new Intent();
-        callCameraApplicationIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(callCameraApplicationIntent, ACTIVITY_START_CAMERA);
+        Intent cameraIntent = new Intent();
+        cameraIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT,"Recent");
+        startActivityForResult(cameraIntent, ACTIVITY_START_CAMERA);
     }
 
     /**

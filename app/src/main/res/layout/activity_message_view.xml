@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    tools:context="id_16109759_hdsd.assign2seanheaslip.MessageView">
+
+
+    <EditText
+        android:id="@+id/edTxt_To"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_To"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/edTxt_Subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_Subject"
+
+        android:layout_below="@+id/edTxt_To"
+        android:layout_alignParentStart="true"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/edTxt_Compose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_Compose"
+        android:textSize="24sp"
+        android:layout_below="@id/edTxt_Subject"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/MsgViewBut_Send"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:textSize="24sp"/>
+</RelativeLayout>
