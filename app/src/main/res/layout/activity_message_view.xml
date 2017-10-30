@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_To"
-        android:textSize="24sp"/>
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/edTxt_Subject"
@@ -25,23 +25,24 @@
 
         android:layout_below="@+id/edTxt_To"
         android:layout_alignParentStart="true"
-        android:textSize="24sp"/>
+        android:textSize="16sp"/>
 
     <EditText
         android:id="@+id/edTxt_Compose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_Compose"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:layout_below="@id/edTxt_Subject"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/msgSendButton"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/msgSendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/MsgViewBut_Send"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:textSize="24sp"/>
+        android:textSize="16sp"/>
 </RelativeLayout>
