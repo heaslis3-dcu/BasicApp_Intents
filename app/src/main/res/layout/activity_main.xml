@@ -14,6 +14,8 @@
         android:layout_weight="1"
         android:background="#D1C4E9"
         android:onClick="captureImage"
+        android:paddingLeft="16dp"
+        android:gravity="center_vertical"
         android:text="@string/str_OpenCamera"
         android:textSize="16sp" />
 
@@ -25,6 +27,8 @@
         android:layout_weight="1"
         android:background="#C5CAE9"
         android:onClick="viewPhoto"
+        android:paddingLeft="16dp"
+        android:gravity="center_vertical"
         android:text="@string/str_ViewPicture"
         android:textSize="16sp" />
     <TextView
@@ -34,15 +38,19 @@
         android:layout_marginTop="16dp"
         android:layout_weight="1"
         android:onClick="openMocEmail"
+        android:paddingLeft="16dp"
+        android:gravity="center_vertical"
         android:text="@string/str_CallActivity"
         android:textSize="16sp"
         android:background="#F0F4C3"/>
     <TextView
-        android:id="@+id/textView_Blank"
+        android:id="@+id/textView_Display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
+        android:paddingLeft="16dp"
+        android:gravity="center_vertical"
         android:text="@string/str_Blank"
         android:textSize="16sp"
         android:background="#FFB300"/>

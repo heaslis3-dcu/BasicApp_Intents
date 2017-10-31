@@ -1,27 +1,29 @@
 package id_16109759_hdsd.assign2seanheaslip;
 
-
 import android.content.Intent;
-
-import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.File;
-
 
 public class MainActivity extends AppCompatActivity {
     private static final int ACTIVITY_START_CAMERA =0;
+    public static final String EXTRA_MESSAGE = "id_16109759_hdsd.assign2seanheaslip";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Get the Intent that started this activity and extract the string
+        Intent intent = getIntent();
+        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+        //Capture the layout's TextView and set the string as its text
+        TextView textView = (TextView) findViewById(R.id.textView_Display);
+        textView.setText(message);
     }
 
     /**
