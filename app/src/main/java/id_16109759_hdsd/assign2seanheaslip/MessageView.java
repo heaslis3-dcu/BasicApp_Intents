@@ -21,18 +21,32 @@ public class MessageView extends AppCompatActivity {
      * Reference:
      * https://developer.android.com/training/basics/firstapp/starting-activity.html
      */
+//Updated 01/11/2017
+    public void sendMessage(View view) {
 
+        //Ref# - https://developer.android.com/training/basics/firstapp/starting-activity.html
+        Intent intent = new Intent(this, MainActivity.class);
+        EditText edtTxtTo = (EditText) findViewById(R.id.edTxt_To);
+        EditText edtTxtSub = (EditText) findViewById(R.id.edTxt_Subject);
+        intent.putExtra("emailTo", edtTxtTo.getText().toString());
+        intent.putExtra("emailSubject", edtTxtSub.getText().toString());
+        finish();
+        startActivity(intent);
+    }
+
+/*
     public void sendMessage(View view) {
 
         //Ref# - https://developer.android.com/training/basics/firstapp/starting-activity.html
         Intent intent = new Intent(this,MainActivity.class);
         EditText edtTxtTo = (EditText) findViewById(R.id.edTxt_To);
         EditText edtTxtSub = (EditText) findViewById(R.id.edTxt_Subject);
+
         String message = ("\n"
                 + "To: " + edtTxtTo.getText().toString()
                 + "\n"
                 + "Subject: " + edtTxtSub.getText().toString());
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
-    }
+    } */
 }
