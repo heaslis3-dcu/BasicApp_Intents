@@ -6,47 +6,34 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class MessageView extends AppCompatActivity {
+public class MessageView extends AppCompatActivity
+{
 
-    public static final String EXTRA_MESSAGE ="id_16109759_hdsd.assign2seanheaslip";
+    public static final String EXTRA_MESSAGE = "id_16109759_hdsd.assign2seanheaslip";
+    private static Intent sendMsgIntent;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_view);
     }
 
     /**
-     * Called when user taps the Send Button
-     * Reference:
+     * Citation: Class contains code adapted from URL:
      * https://developer.android.com/training/basics/firstapp/starting-activity.html
+     * Permission: Licence - Apache V2
      */
-//Updated 01/11/2017
-    public void sendMessage(View view) {
-
-        //Ref# - https://developer.android.com/training/basics/firstapp/starting-activity.html
-        Intent intent = new Intent(this, MainActivity.class);
+    // Called when user taps the Send Button - Updated 01/11/2017
+    public void sendMessage(View view)
+    {
         EditText edtTxtTo = (EditText) findViewById(R.id.edTxt_To);
         EditText edtTxtSub = (EditText) findViewById(R.id.edTxt_Subject);
-        intent.putExtra("emailTo", edtTxtTo.getText().toString());
-        intent.putExtra("emailSubject", edtTxtSub.getText().toString());
+
+        sendMsgIntent = new Intent(this, MainActivity.class);
+        sendMsgIntent.putExtra("emailTo", edtTxtTo.getText().toString());
+        sendMsgIntent.putExtra("emailSubject", edtTxtSub.getText().toString());
         finish();
-        startActivity(intent);
+        startActivity(sendMsgIntent);
     }
-
-/*
-    public void sendMessage(View view) {
-
-        //Ref# - https://developer.android.com/training/basics/firstapp/starting-activity.html
-        Intent intent = new Intent(this,MainActivity.class);
-        EditText edtTxtTo = (EditText) findViewById(R.id.edTxt_To);
-        EditText edtTxtSub = (EditText) findViewById(R.id.edTxt_Subject);
-
-        String message = ("\n"
-                + "To: " + edtTxtTo.getText().toString()
-                + "\n"
-                + "Subject: " + edtTxtSub.getText().toString());
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    } */
 }

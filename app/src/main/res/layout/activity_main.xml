@@ -14,10 +14,13 @@
         android:layout_weight="1"
         android:background="#D1C4E9"
         android:onClick="captureImage"
-        android:paddingLeft="16dp"
+        android:clickable="true"
         android:gravity="center_vertical"
         android:text="@string/str_OpenCamera"
-        android:textSize="16sp" />
+        android:paddingLeft="16dp"
+        android:textSize="16sp"
+
+        />
 
     <TextView
         android:id="@+id/textView_ViewPicture"
@@ -27,20 +30,23 @@
         android:layout_weight="1"
         android:background="#C5CAE9"
         android:onClick="viewPhoto"
-        android:paddingLeft="16dp"
+        android:clickable="true"
         android:gravity="center_vertical"
         android:text="@string/str_ViewPicture"
+        android:paddingLeft="16dp"
         android:textSize="16sp" />
+
     <TextView
         android:id="@+id/textView_CallActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
-        android:onClick="openMocEmail"
-        android:paddingLeft="16dp"
         android:gravity="center_vertical"
         android:text="@string/str_CallActivity"
+        android:paddingLeft="16dp"
+        android:onClick="openMocEmail"
+        android:clickable="true"
         android:textSize="16sp"
         android:background="#F0F4C3"/>
     <TextView
@@ -49,9 +55,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
-        android:paddingLeft="16dp"
         android:gravity="center_vertical"
-        android:text="@string/str_Blank"
+        android:text=""
+        android:paddingLeft="16dp"
         android:textSize="16sp"
         android:background="#FFB300"/>
 
@@ -60,8 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:background="#D1C4E9"
         android:onClick="launchEmail"
+        android:background="#D1C4E9"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/str_Send"

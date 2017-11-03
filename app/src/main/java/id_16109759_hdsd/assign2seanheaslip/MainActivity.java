@@ -1,22 +1,40 @@
+/*
+* * Copyright 2013 The Android Open Source Project  *
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0  *
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 package id_16109759_hdsd.assign2seanheaslip;
 
 import android.content.Intent;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     private static final int ACTIVITY_START_CAMERA = 0;
-    public static final String EXTRA_MESSAGE = "id_16109759_hdsd.assign2seanheaslip";
-    Button btn;
-    String message;
+    private static Button btn;
+    private static Intent cameraIntent, viewPhotoIntent, mocEmailIntent, launchEmailIntent;
+    private static String emailAdd, subjectAdd;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -25,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         btn.setEnabled(false);
 
         //Declare and initialise Message details 'To' and 'Subject',
-        String emailAdd = getIntent().getStringExtra("emailTo");
-        String subjectAdd = getIntent().getStringExtra("emailSubject");
+        emailAdd = getIntent().getStringExtra("emailTo");
+        subjectAdd = getIntent().getStringExtra("emailSubject");
 
         /**
          * Tried to use if statement to determine if the two strings are null, however,
@@ -34,62 +52,24 @@ public class MainActivity extends AppCompatActivity {
          * And could not figure out why using '||' (OR) / '&&' (AND) would still result
          */
 
-        //TODO - check is a Try/Catch method to throw IOEXCEPTION will work here as
-        if (emailAdd != null && subjectAdd != null) {
+        //TODO - check if a Try/Catch method to throw IOEXCEPTION will work here
+        if (emailAdd != null && subjectAdd != null)
+        {
             TextView inputReturnedData = (TextView) findViewById(R.id.textView_Display);
+
             inputReturnedData.setText(
                     "To: " + emailAdd
                             + "\n"
                             + "Subject: " + subjectAdd);
             btn.setEnabled(true);
-        } else {
+            Log.i("Assign2Tag", "The Email entered is: " + emailAdd + " and Subject is: " + subjectAdd);
+
+        }
+        else
+        {
             Toast.makeText(this, "Send Button Only enabled when both To & Subject is populated", Toast.LENGTH_LONG).show();
             btn.setEnabled(false);
         }
-
-
-        /* This section Replaced 1st November 2017 21:48, with reworked intent to
-        *also disable send button on main activity,
-        *
-        *
-        //Get the Intent that started this activity and extract the string
-        Intent returnDataIntent = getIntent();
-        String emailAdd = returnDataIntent.getStringExtra("emailTo");
-        String subjectAdd = returnDataIntent.getStringExtra("emailSubject");
-        if(emailAdd != null && subjectAdd != null)
-        {
-            TextView inputReturnedData = (TextView) findViewById(R.id.textView_Display);
-            inputReturnedData.setText(
-                    "To: " + emailAdd
-                            + "\n"
-                            +"Subject: " + subjectAdd);
-        }
-        else {
-            Toast.makeText(this, "Send Button Only enabled when To & Subject is populated", Toast.LENGTH_LONG).show();
-            btn = (Button) findViewById(R.id.button_Send);
-            btn.setEnabled(false);
-        }
-
-        */
-/* Turned off 01/11/2017
-        //Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-        btn = (Button) findViewById(R.id.button_Send);
-        if(message== null){
-    btn.setEnabled(false);
-        } else {
-            btn.setEnabled(true);
-            //Capture the layout's TextView and set the string as its text
-            TextView textView = (TextView) findViewById(R.id.textView_Display);
-            textView.setText(message);
-        }
-        */
-
-        //Capture the layout's TextView and set the string as its text
-//        TextView textView = (TextView) findViewById(R.id.textView_Display);
-//        textView.setText(message);
-
     }
 
     /**
@@ -99,15 +79,23 @@ public class MainActivity extends AppCompatActivity {
      *
      * @param view
      */
-    public void captureImage(View view) {
+    public void captureImage(View view)
+    {
         //Toast.makeText(this, "Camera button pressed", Toast.LENGTH_LONG).show();
-        Intent cameraIntent = new Intent();
+        cameraIntent = new Intent();
         cameraIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, "Recent");
         startActivityForResult(cameraIntent, ACTIVITY_START_CAMERA);
+
+        //Log message
+        Log.i("Assign2Tag", "The camera has opened!");
     }
 
     /**
+     * REMOVED: 02/11/2017 @ 22:14 - see notes in Assign2 SDA Word Document
+     * During testing - noted the onActivityResult method ran twice,
+     * later discovered the only purpose of this method was to post the Toast I had added during testing
+     *
      * Receive the Result: onActivityResult:
      * https://developer.android.com/training/basics/intents/result.html
      *
@@ -115,23 +103,34 @@ public class MainActivity extends AppCompatActivity {
      * @param resultCode
      * @param data
      */
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == ACTIVITY_START_CAMERA && resultCode == RESULT_OK) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == ACTIVITY_START_CAMERA && resultCode == RESULT_OK);
+
+        {
             Toast.makeText(this, "Image taken", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void viewPhoto(View view) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);//
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+    public void viewPhoto(View view)
+    {
+        viewPhotoIntent = new Intent();
+        viewPhotoIntent.setType("image/*");
+        viewPhotoIntent.setAction(Intent.ACTION_GET_CONTENT);//
+        startActivityForResult(viewPhotoIntent.createChooser(viewPhotoIntent, "Select Picture"), 1);
+
+        //log message
+        Log.i("Assign2Tag", "The photo has been viewed");
     }
 
     //Explicit Intent
-    public void openMocEmail(View arg0) {
-        Intent intent = new Intent(MainActivity.this, MessageView.class);
-        startActivity(intent);
+    public void openMocEmail(View arg0)
+    {
+        mocEmailIntent = new Intent(MainActivity.this, MessageView.class);
+        startActivity(mocEmailIntent);
+
+        //log message
+        Log.i("Assign2Tag", "The MocEmail has opened!");
     }
 
     /**
@@ -141,20 +140,17 @@ public class MainActivity extends AppCompatActivity {
      * Reference using putExtra(Intent.EXTRA_EMAIL...etc:
      * https://stackoverflow.com/questions/8701634/send-email-intent
      */
-    public void launchEmail(View view) {
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setType("text/html");
-        String emailAdd = getIntent().getStringExtra("emailTo");
-        String subjectAdd = getIntent().getStringExtra("emailSubject");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailAdd});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, subjectAdd);
-        startActivity(emailIntent.createChooser(emailIntent, "Send Email"));
-    }
+    public void launchEmail(View view)
+    {
+        launchEmailIntent = new Intent(Intent.ACTION_SEND);
+        launchEmailIntent.setType("text/html");
+        emailAdd = getIntent().getStringExtra("emailTo");
+        subjectAdd = getIntent().getStringExtra("emailSubject");
+        launchEmailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{emailAdd});
+        launchEmailIntent.putExtra(Intent.EXTRA_SUBJECT, subjectAdd);
+        startActivity(launchEmailIntent.createChooser(launchEmailIntent, "Send Email"));
 
-/* Replaced 21:55 on 1st November 2017:
-    public void launchEmail(View view) {
-        Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setType("text/plain");
-        startActivity(emailIntent);
-    } */
+        //log message
+        Log.i("Assign2Tag", "The email Intent has launched! To: " + emailAdd + " Subject: " + subjectAdd);
+    }
 }
