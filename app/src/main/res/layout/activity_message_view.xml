@@ -10,30 +10,22 @@
     tools:context="id_16109759_hdsd.assign2seanheaslip.MessageView">
 
     <EditText
+        style="@style/MsgViewEdtTextStyle"
         android:id="@+id/edTxt_To"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_To"
-        android:textSize="16sp"/>
+        android:hint="@string/hint_To" />
 
     <EditText
+        style="@style/MsgViewEdtTextStyle"
         android:id="@+id/edTxt_Subject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/hint_Subject"
-
         android:layout_below="@+id/edTxt_To"
-        android:layout_alignParentStart="true"
-        android:textSize="16sp"/>
+         />
 
     <EditText
+        style="@style/MsgViewEdtTextStyle"
         android:id="@+id/edTxt_Compose"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/hint_Compose"
-        android:textSize="16sp"
         android:layout_below="@id/edTxt_Subject"
-        android:layout_alignParentStart="true"
         android:layout_above="@+id/msgSendButton" />
 
     <Button
@@ -44,6 +36,8 @@
         android:onClick="sendMessage"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"/>
 
 </RelativeLayout>

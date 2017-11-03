@@ -8,56 +8,30 @@
 
     <TextView
         android:id="@+id/textView_OpenCamera"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
         android:background="#D1C4E9"
         android:onClick="captureImage"
-        android:clickable="true"
-        android:gravity="center_vertical"
         android:text="@string/str_OpenCamera"
-        android:paddingLeft="16dp"
-        android:textSize="16sp" />
+        style="@style/MainTextViewStyle"/>
 
     <TextView
+        style="@style/MainTextViewStyle"
         android:id="@+id/textView_ViewPicture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
         android:background="#C5CAE9"
         android:onClick="viewPhoto"
-        android:clickable="true"
-        android:gravity="center_vertical"
-        android:text="@string/str_ViewPicture"
-        android:paddingLeft="16dp"
-        android:textSize="16sp" />
+        android:text="@string/str_ViewPicture" />
 
     <TextView
+        style="@style/MainTextViewStyle"
         android:id="@+id/textView_CallActivity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:text="@string/str_CallActivity"
-        android:paddingLeft="16dp"
+        android:background="#F0F4C3"
         android:onClick="openMocEmail"
-        android:clickable="true"
-        android:textSize="16sp"
-        android:background="#F0F4C3"/>
+        android:text="@string/str_CallActivity"/>
+
     <TextView
         android:id="@+id/textView_Display"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical"
-        android:text=""
-        android:paddingLeft="16dp"
-        android:textSize="16sp"
-        android:background="#FFB300"/>
+        style="@style/MainTextViewStyle"
+        android:background="#FFB300"
+        android:clickable="false"/>
 
     <Button
         android:id="@+id/button_Send"
@@ -69,6 +43,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/str_Send"
+        android:textSize="16sp"
         android:textAlignment="center" />
 
 </LinearLayout>
