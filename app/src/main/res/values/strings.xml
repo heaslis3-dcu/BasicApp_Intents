@@ -8,5 +8,5 @@
     <string name="hint_Subject">Subject:</string>
     <string name="hint_To">To:</string>
     <string name="hint_Compose">Compose message:</string>
-    <string name="MsgViewBut_Send">Send</string>
+
 </resources>

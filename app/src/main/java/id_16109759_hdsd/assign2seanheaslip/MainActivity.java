@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity
          * ran into some trouble with this, checked the length of the null value and it is '0',
          * And could not figure out why using '||' (OR) / '&&' (AND) would still result
          */
-
         //TODO - check if a Try/Catch method to throw IOEXCEPTION will work here
         if (emailAdd != null && subjectAdd != null)
         {
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity
                             + "Subject: " + subjectAdd);
             btn.setEnabled(true);
             Log.i("Assign2Tag", "The Email entered is: " + emailAdd + " and Subject is: " + subjectAdd);
-
         }
         else
         {
@@ -73,6 +71,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
+     * Citation:
+     * Licence include above
      * MediaStore reference: Constants: ACTION_IMAGE_CAPTURE
      * https://developer.android.com/reference/android/provider/MediaStore.html
      * https://developer.android.com/reference/android/provider/MediaStore.html#ACTION_IMAGE_CAPTURE
@@ -92,12 +92,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * REMOVED: 02/11/2017 @ 22:14 - see notes in Assign2 SDA Word Document
-     * During testing - noted the onActivityResult method ran twice,
-     * later discovered the only purpose of this method was to post the Toast I had added during testing
-     *
+     * Citation:
      * Receive the Result: onActivityResult:
      * https://developer.android.com/training/basics/intents/result.html
+     * During testing - noted the onActivityResult method ran twice,
+     * later discovered the only purpose of this method was to post the Toast I had added during testing
      *
      * @param requestCode
      * @param resultCode
@@ -106,12 +105,17 @@ public class MainActivity extends AppCompatActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         if (requestCode == ACTIVITY_START_CAMERA && resultCode == RESULT_OK);
-
         {
             Toast.makeText(this, "Image taken", Toast.LENGTH_LONG).show();
         }
     }
 
+    /**
+     * Citation:
+     * code adapted from - under Finally section
+     * https://stackoverflow.com/questions/11969289
+     * @param view
+     */
     public void viewPhoto(View view)
     {
         viewPhotoIntent = new Intent();
@@ -123,7 +127,12 @@ public class MainActivity extends AppCompatActivity
         Log.i("Assign2Tag", "The photo has been viewed");
     }
 
-    //Explicit Intent
+    /**
+     * Explicit Intent
+     * Citation:
+     * code adapted from course notes section on'Intent Types' - page 72
+     * @param arg0
+     */
     public void openMocEmail(View arg0)
     {
         mocEmailIntent = new Intent(MainActivity.this, MessageView.class);
@@ -134,11 +143,11 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Reference for launching email application
-     * https://stackoverflow.com/questions/3935009/how-to-open-gmail-compose-when-a-button-is-clicked-in-android-app
-     * <p>
-     * Reference using putExtra(Intent.EXTRA_EMAIL...etc:
-     * https://stackoverflow.com/questions/8701634/send-email-intent
+     * Citation:
+     * code adapted from reference for launching email application
+     * https://stackoverflow.com/questions/3935009/
+     * and adapted from reference using putExtra(Intent.EXTRA_EMAIL...etc:
+     * https://stackoverflow.com/questions/8701634/
      */
     public void launchEmail(View view)
     {

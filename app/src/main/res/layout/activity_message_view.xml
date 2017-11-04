@@ -9,6 +9,8 @@
     android:orientation="vertical"
     tools:context="id_16109759_hdsd.assign2seanheaslip.MessageView">
 
+    <!--Note if I had used an xml file in landscape I would have added
+            android:hint for each EditText to the styles.xml-->
     <EditText
         style="@style/MsgViewEdtTextStyle"
         android:id="@+id/edTxt_To"
@@ -29,15 +31,13 @@
         android:layout_above="@+id/msgSendButton" />
 
     <Button
+        style="@style/GeneralButtonStyle"
         android:id="@+id/msgSendButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/MsgViewBut_Send"
         android:onClick="sendMessage"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:textSize="16sp"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp"
+        android:textColor="@color/colorTextBlack"/>
 
 </RelativeLayout>

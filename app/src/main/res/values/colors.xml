@@ -4,4 +4,14 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!--Set text Colors here-->
+    <color name="colorTextWhite">#FFFFFF</color>
+    <color name="colorTextBlack">#000000</color>
+    <!--Set background Colors here for MainActivity-->
+    <color name="colorBackgroundPurple">#800080</color>
+    <color name="colorBackgroundCyan">#00FFFF</color>
+    <color name="colorBackgroundAmber">#FFB300</color>
+    <color name="colorBackgroundPink">#f039c3</color>
+    <color name="colorButtonLaven">#D1C4E9</color>
+
 </resources>

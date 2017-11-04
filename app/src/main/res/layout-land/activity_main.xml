@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/textView_OpenCamera"
-        android:background="#D1C4E9"
+        android:background="@color/colorBackgroundPurple"
         android:onClick="captureImage"
         android:text="@string/str_OpenCamera"
         style="@style/MainTextViewStyle"/>
@@ -16,34 +16,32 @@
     <TextView
         style="@style/MainTextViewStyle"
         android:id="@+id/textView_ViewPicture"
-        android:background="#C5CAE9"
+        android:background="@color/colorBackgroundCyan"
         android:onClick="viewPhoto"
         android:text="@string/str_ViewPicture" />
 
     <TextView
         style="@style/MainTextViewStyle"
         android:id="@+id/textView_CallActivity"
-        android:background="#F0F4C3"
+        android:background="@color/colorBackgroundAmber"
         android:onClick="openMocEmail"
         android:text="@string/str_CallActivity"/>
 
     <TextView
         android:id="@+id/textView_Display"
         style="@style/MainTextViewStyle"
-        android:background="#FFB300"
+        android:background="@color/colorBackgroundPink"
         android:clickable="false"/>
 
     <Button
+        style="@style/GeneralButtonStyle"
         android:id="@+id/button_Send"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:onClick="launchEmail"
-        android:background="#D1C4E9"
+        android:background="@color/colorButtonLaven"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/str_Send"
-        android:textSize="16sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/colorTextWhite"/>
 
 </LinearLayout>
