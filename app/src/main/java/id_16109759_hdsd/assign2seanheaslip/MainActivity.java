@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     private static final int ACTIVITY_START_CAMERA = 0;
     private static Button btn;
     private static Intent cameraIntent, viewPhotoIntent, mocEmailIntent, launchEmailIntent;
-    private static String emailAdd, subjectAdd;
+    private static String toText = "To: ", toSubject = "Subject: ", emailAdd, subjectAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -68,9 +68,9 @@ public class MainActivity extends AppCompatActivity
             TextView inputReturnedData = (TextView) findViewById(R.id.textView_Display);
 
             inputReturnedData.setText(
-                    "To: " + emailAdd
+                    toText + emailAdd
                             + "\n"
-                            + "Subject: " + subjectAdd);
+                            + toSubject + subjectAdd);
             btn.setEnabled(true);
             Log.i("Assign2Tag", "The Email entered is: " + emailAdd + " and Subject is: " + subjectAdd);
         }
