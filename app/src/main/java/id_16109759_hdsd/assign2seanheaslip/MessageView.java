@@ -36,6 +36,10 @@ public class MessageView extends AppCompatActivity
      * Citation: Class contains code adapted from URL:
      * https://developer.android.com/training/basics/firstapp/starting-activity.html
      * Permission: Licence - Apache V2
+     *
+     * Method is called when the user taps the send button in Message View Activity
+     * Data stored in the To and Subject fields is captured.
+     * Data is caught in the onCreate Method of the Main Activity,
      */
     // Called when user taps the Send Button - Updated 01/11/2017
     public void sendMessage(View view)

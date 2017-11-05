@@ -23,7 +23,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity
 {
@@ -42,14 +42,25 @@ public class MainActivity extends AppCompatActivity
         btn = (Button) findViewById(R.id.button_Send);
         btn.setEnabled(false);
 
-        //Declare and initialise Message details 'To' and 'Subject',
+        //Declare and initialise Message details 'To' and 'Subject', used in last
         emailAdd = getIntent().getStringExtra("emailTo");
         subjectAdd = getIntent().getStringExtra("emailSubject");
 
         /**
          * Tried to use if statement to determine if the two strings are null, however,
          * ran into some trouble with this, checked the length of the null value and it is '0',
-         * And could not figure out why using '||' (OR) / '&&' (AND) would still result
+         * And could not figure out why using '||' (OR) / '&&' (AND) would not work properly,
+         * The below works for my app, though would appreciate some guidance on how to improve this
+         *
+         * This code first checks if the emailAdd and subjectAdd fields in the TextView are populated.
+         * Code disables the Send Button on Main Activity, until the Send Button on the Message View
+         * Activity is pressed.
+         *
+         * When the Send button is pressed in the Message View Activity, regardless if data is captured
+         * or not, the last textView (Amber) on the main activity, will populate with at the very least
+         * the To: and Subject: hard coded data below. This will also activate the Send button on
+         * the Main Activity.
+         *
          */
         //TODO - check if a Try/Catch method to throw IOEXCEPTION will work here
         if (emailAdd != null && subjectAdd != null)
@@ -65,7 +76,7 @@ public class MainActivity extends AppCompatActivity
         }
         else
         {
-            Toast.makeText(this, "Send Button Only enabled when both To & Subject is populated", Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "Send Button Only enabled when both To & Subject is populated", Toast.LENGTH_LONG).show();
             btn.setEnabled(false);
         }
     }
@@ -76,7 +87,7 @@ public class MainActivity extends AppCompatActivity
      * MediaStore reference: Constants: ACTION_IMAGE_CAPTURE
      * https://developer.android.com/reference/android/provider/MediaStore.html
      * https://developer.android.com/reference/android/provider/MediaStore.html#ACTION_IMAGE_CAPTURE
-     *
+     *  Method used to open Camera and capture image.
      * @param view
      */
     public void captureImage(View view)
@@ -96,7 +107,8 @@ public class MainActivity extends AppCompatActivity
      * Receive the Result: onActivityResult:
      * https://developer.android.com/training/basics/intents/result.html
      * During testing - noted the onActivityResult method ran twice,
-     * later discovered the only purpose of this method was to post the Toast I had added during testing
+     * Later discovered this method may not be doing anything.
+     * Would appreciate some guidance on how to use this method properly.
      *
      * @param requestCode
      * @param resultCode
@@ -106,7 +118,8 @@ public class MainActivity extends AppCompatActivity
     {
         if (requestCode == ACTIVITY_START_CAMERA && resultCode == RESULT_OK);
         {
-            Toast.makeText(this, "Image taken", Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "Image taken", Toast.LENGTH_LONG).show();
+
         }
     }
 
@@ -114,6 +127,7 @@ public class MainActivity extends AppCompatActivity
      * Citation:
      * code adapted from - under Finally section
      * https://stackoverflow.com/questions/11969289
+     * This Method is used to view the image taken by the camera
      * @param view
      */
     public void viewPhoto(View view)
@@ -131,6 +145,7 @@ public class MainActivity extends AppCompatActivity
      * Explicit Intent
      * Citation:
      * code adapted from course notes section on'Intent Types' - page 72
+     * This method is used to open the Message View Class and xml view
      * @param arg0
      */
     public void openMocEmail(View arg0)
@@ -148,6 +163,10 @@ public class MainActivity extends AppCompatActivity
      * https://stackoverflow.com/questions/3935009/
      * and adapted from reference using putExtra(Intent.EXTRA_EMAIL...etc:
      * https://stackoverflow.com/questions/8701634/
+     *
+     * This Method launches a chooser for the user to pick and open desired email.
+     * This method populates the To and Subject line of the email compose view.
+     * The String Array is used to populate the TO field of the email
      */
     public void launchEmail(View view)
     {
